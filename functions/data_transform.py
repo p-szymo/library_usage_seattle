@@ -135,7 +135,7 @@ for ind, i in enumerate(range(0, 110000000, 10000000), 1):
 	df_merged.iloc[i:i+10000000].to_pickle(f'{data_path}seattle_lib_{ind}.pkl', compression='gzip')
     
 	# print status/time
-	status_update(f'File {ind} out of 11 saved successfully')
+	status_update(f'File {ind} out of 11 saved successfully')\
 
 # # compressed pickle
 # df_merged.to_pickle(data_path + 'seattle_lib.pkl', compression='gzip')
@@ -145,3 +145,33 @@ for ind, i in enumerate(range(0, 110000000, 10000000), 1):
 
 # status update
 status_update('Save successful!')
+
+
+##----LOAD----##
+
+# print status/time
+status_update('Begin load...')
+
+# load first part
+df = pd.read_pickle('data/seattle_lib_1.pkl', compression='gzip')
+
+# print status/time
+status_update('File 1 loaded successfully.')
+
+# iterate through 2-11
+for i in range(2, 12):
+
+    # load parts 2-11
+    to_add = pd.read_pickle(f'data/seattle_lib_{i}.pkl', compression='gzip')
+    
+    # print status/time
+    status_update(f'File {i} loaded successfully.')
+
+    # combine with previous part
+    df = pd.concat([df, to_add], ignore_index=True)
+    
+    # print status/time
+    status_update(f'Concatenation successful. DataFrame consists of files 1-{i}.')
+    
+# print status/time
+status_update('Load complete!')
