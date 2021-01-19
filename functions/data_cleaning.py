@@ -105,3 +105,91 @@ def transform_category(df, col, values, replacer):
 	)
 
 	return converted
+
+
+
+def load_multi_df(data_path, file_prefix, num_files, compression='infer', verbose=0):
+
+	'''
+
+	Function to load multiple Pickle files and concatenate them into one Pandas DataFrame.
+
+	NOTE: Files must have a consistent naming structure, with sequential numerical
+	endings.
+		For example, `file_1`, `file_2`, `file_3`, etc. The `file_prefix` in this 
+		instance would be 'file_'.
+
+
+	Input
+	-----
+
+	data_path : str
+		Pathway that contains the files to load.
+		NOTE: Must end in '/'.
+
+	file_prefix : str
+		Consistent prefix of each file.
+
+		For example, `file_1`, `file_2`, `file_3`, etc. The `file_prefix` in this 
+		instance would be 'file_'.
+
+	num_files : int
+		Number of files to load.
+
+
+	Optional input
+	--------------
+	compression : str
+		String denoting type of compression, if any (default='infer').
+
+		For more info, visit:
+		`https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_pickle.html`
+
+	verbose : int
+		Setting of status updates (including timestamps). Valid options are 0, 1, or 2.
+		0 : No updates/printouts.
+		1 : Only update when load begins or is complete.
+		2 : Update after each file is successfully loaded and successfully added to
+			the DataFrame. 
+
+
+	Output
+	------
+	df : Pandas DataFrame
+		Single DataFrame from all loaded parts.
+
+	'''
+
+	if verbose:
+		# print status/time
+		status_update('Begin load...')
+
+	# load first part
+	df = pd.read_pickle(data_path + file_prefix + '1', compression=compression)
+
+	if verbose == 2:
+		# print status/time
+		status_update('File 1 loaded successfully.')
+
+	# iterate through files
+	for i in range(2, num_files+1):
+
+	    # load parts 2 through num_files
+	    to_add = pd.read_pickle(data_path + file_prefix + str(i), compression=compression)
+	    
+	    if verbose == 2:
+		    # print status/time
+		    status_update(f'File {i} loaded successfully.')
+
+	    # combine with previous part
+	    df = pd.concat([df, to_add], ignore_index=True)
+	    
+	    if verbose == 2:
+		    # print status/time
+		    status_update(f'Concatenation successful. DataFrame consists of files 1-{i}.')
+	
+	if verbose:
+		# print status/time
+		status_update('Load complete!')
+
+	return df
