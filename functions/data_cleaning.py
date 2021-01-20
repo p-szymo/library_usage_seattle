@@ -108,7 +108,7 @@ def transform_category(df, col, values, replacer):
 
 
 
-def load_multi_df(data_path, file_prefix, num_files, compression='infer', verbose=0):
+def load_multi_df(data_path, file_prefix, ext, num_files, compression='infer', verbose=0):
 
 	'''
 
@@ -122,7 +122,6 @@ def load_multi_df(data_path, file_prefix, num_files, compression='infer', verbos
 
 	Input
 	-----
-
 	data_path : str
 		Pathway that contains the files to load.
 		NOTE: Must end in '/'.
@@ -132,6 +131,11 @@ def load_multi_df(data_path, file_prefix, num_files, compression='infer', verbos
 
 		For example, `file_1`, `file_2`, `file_3`, etc. The `file_prefix` in this 
 		instance would be 'file_'.
+
+	ext : str
+		Extension of the files.
+		NOTE: This should not include any leading dots,
+			  i.e. 'pkl' should be used over '.pkl'.
 
 	num_files : int
 		Number of files to load.
@@ -165,7 +169,7 @@ def load_multi_df(data_path, file_prefix, num_files, compression='infer', verbos
 		status_update('Begin load...')
 
 	# load first part
-	df = pd.read_pickle(data_path + file_prefix + '1', compression=compression)
+	df = pd.read_pickle(f'{data_path}{file_prefix}1.{ext}', compression=compression)
 
 	if verbose == 2:
 		# print status/time
@@ -175,7 +179,7 @@ def load_multi_df(data_path, file_prefix, num_files, compression='infer', verbos
 	for i in range(2, num_files+1):
 
 	    # load parts 2 through num_files
-	    to_add = pd.read_pickle(data_path + file_prefix + str(i), compression=compression)
+	    to_add = pd.read_pickle(f'{data_path}{file_prefix}{i}.{ext}', compression=compression)
 	    
 	    if verbose == 2:
 		    # print status/time
