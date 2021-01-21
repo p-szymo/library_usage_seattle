@@ -67,7 +67,7 @@ def status_update(msg):
 
 
 
-def transform_category(df, col, values, replacer):
+def transform_category(df, search_col, transform_col, values, replacer):
 
 	'''
 
@@ -80,8 +80,11 @@ def transform_category(df, col, values, replacer):
 	df : Pandas DataFrame
 		DataFrame containing the column to transform.
 
-	col : str
-		Name of the column to transform.
+	search_col : str
+		Name of the column to search for values.
+
+	transform_col : str
+		Name of the column with values to transform.
 
 	values : list (str)
 		List of value(s) to transform.
@@ -99,9 +102,8 @@ def transform_category(df, col, values, replacer):
 
 	# pandas 'category' object
 	converted = pd.Categorical(
-
 		# replace values
-	    np.where(df[col].isin(values), replacer, df[col])
+	    np.where(df[search_col].isin(values), replacer, df[transform_col])
 	)
 
 	return converted
