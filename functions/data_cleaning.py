@@ -34,7 +34,7 @@ def timestamp(form='%H:%M:%S'):
 	return current_time
 
 
-def status_update(msg):
+def status_update(msg, timestamp_form='%H:%M:%S'):
 
 	'''
 
@@ -47,6 +47,14 @@ def status_update(msg):
 		Message to print under the current time.
 
 
+	Optional input
+	--------------
+	timestamp_form : str
+		Format for current time (default = '%H:%M:%S').
+		For more format options, visit:
+		`https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior`
+
+
 	Output
 	------
 	None
@@ -54,10 +62,11 @@ def status_update(msg):
 	'''
 
 	# current time
-	print('Current time =', timestamp())
+	time_status = f'Current time = {timestamp(form=timestamp_form)}'
+	print(time_status)
 
 	# separating line
-	print('-----------------------')
+	print('-' * len(time_status))
 
 	# input message
 	print(msg)
