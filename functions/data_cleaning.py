@@ -208,3 +208,110 @@ def load_multi_df(data_path, file_prefix, ext, num_files, compression='infer', v
 		status_update('Load complete!')
 
 	return df
+
+
+def name_splitter(name, cutoff):
+
+	'''
+
+	Function to split long strings for use in horizontal bar chart.
+
+
+	Input
+	-----
+	name : str
+		Name of object to graph.
+
+	cutoff : int
+		Number of characters to include on one line of graph.
+
+
+	Output
+	------
+	name : str
+		Name with endline character splitting string.
+
+	'''
+
+	# split string into separate words
+    splitted = name.split()
+
+    # instantiate empty string
+    name = ''
+
+    # instantiate index counter
+    i = 0
+
+    # while string is below threshold
+    while len(name) <= cutoff-5:
+
+    	# add word and space to list
+        name += splitted[i] + ' '
+
+        # iterate through index
+        i += 1
+
+    # add endline character and remaining words of string
+    name += '\n' + ' '.join(splitted[i:])
+
+    return name
+
+
+def name_beautifier(name, cutoff=25, **kwargs):
+
+	'''
+
+	Function to split long strings and beautify them for use in horizontal bar chart.
+
+
+	Input
+	-----
+	name : str
+		Name of object to graph.
+
+
+	Optional input
+	--------------
+	cutoff : int
+		Number of characters to include on one line of graph (default=25).
+
+
+	Output
+	------
+	name : str
+		Input capitalized, with endline character and/or ellipsis if too long.
+
+	'''
+
+	# strings more than twice as long as cutoff
+    if len(name) > cutoff*2:
+
+    	# split into two lines
+    	name = name_splitter(name, cutoff)
+
+    	# split first 50 characters into two strings
+        resplitted = name[:50].split('\n')
+
+        # split second string into words
+        resplitted[1] = resplitted[1].split()
+
+        # replace last word with ellipsis
+        resplitted[1][-1] = '...'
+
+        # rejoin words
+        resplitted[1] = ' '.join(resplitted[1])
+
+        # rejoin two strings
+        name = '\n'.join(resplitted)
+
+    # strings longer than cutoff
+    elif len(name) > cutoff:
+
+    	# split into two lines
+        name = name_splitter(name, cutoff)
+
+    # strings shorter than cutoff --> do nothing
+    else:
+        pass
+        
+    return name.title()
