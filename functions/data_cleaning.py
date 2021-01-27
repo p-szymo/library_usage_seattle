@@ -4,7 +4,6 @@ import numpy as np
 
 
 def timestamp(form='%H:%M:%S'):
-
 	'''
 
 	Function to retrieve the current time as a string.
@@ -35,7 +34,6 @@ def timestamp(form='%H:%M:%S'):
 
 
 def status_update(msg, timestamp_form='%H:%M:%S'):
-
 	'''
 
 	Function to print current time and an input message.
@@ -75,12 +73,10 @@ def status_update(msg, timestamp_form='%H:%M:%S'):
 	print('')
 
 
-
 def transform_category(df, search_col, transform_col, values, replacer):
-
 	'''
 
-	Function to lump multiple values within a Pandas DataFrame column 
+	Function to lump multiple values within a Pandas DataFrame column
 	with dtype of 'category' into one label.
 
 
@@ -118,16 +114,20 @@ def transform_category(df, search_col, transform_col, values, replacer):
 	return converted
 
 
-
-def load_multi_df(data_path, file_prefix, ext, num_files, compression='infer', verbose=0):
-
+def load_multi_df(
+    data_path,
+    file_prefix,
+    ext,
+    num_files,
+    compression='infer',
+     verbose=0):
 	'''
 
 	Function to load multiple Pickle files and concatenate them into one Pandas DataFrame.
 
 	NOTE: Files must have a consistent naming structure, with sequential numerical
 	endings.
-		For example, `file_1`, `file_2`, `file_3`, etc. The `file_prefix` in this 
+		For example, `file_1`, `file_2`, `file_3`, etc. The `file_prefix` in this
 		instance would be 'file_'.
 
 
@@ -140,7 +140,7 @@ def load_multi_df(data_path, file_prefix, ext, num_files, compression='infer', v
 	file_prefix : str
 		Consistent prefix of each file.
 
-		For example, `file_1`, `file_2`, `file_3`, etc. The `file_prefix` in this 
+		For example, `file_1`, `file_2`, `file_3`, etc. The `file_prefix` in this
 		instance would be 'file_'.
 
 	ext : str
@@ -165,7 +165,7 @@ def load_multi_df(data_path, file_prefix, ext, num_files, compression='infer', v
 		0 : No updates/printouts.
 		1 : Only update when load begins or is complete.
 		2 : Update after each file is successfully loaded and successfully added to
-			the DataFrame. 
+			the DataFrame.
 
 
 	Output
@@ -180,29 +180,34 @@ def load_multi_df(data_path, file_prefix, ext, num_files, compression='infer', v
 		status_update('Begin load...')
 
 	# load first part
-	df = pd.read_pickle(f'{data_path}{file_prefix}1.{ext}', compression=compression)
+	df = pd.read_pickle(
+    f'{data_path}{file_prefix}1.{ext}',
+     compression=compression)
 
 	if verbose == 2:
 		# print status/time
 		status_update('File 1 loaded successfully.')
 
 	# iterate through files
-	for i in range(2, num_files+1):
+	for i in range(2, num_files + 1):
 
 	    # load parts 2 through num_files
-	    to_add = pd.read_pickle(f'{data_path}{file_prefix}{i}.{ext}', compression=compression)
-	    
+	    to_add = pd.read_pickle(
+    f'{data_path}{file_prefix}{i}.{ext}',
+     compression=compression)
+
 	    if verbose == 2:
 		    # print status/time
 		    status_update(f'File {i} loaded successfully.')
 
 	    # combine with previous part
 	    df = pd.concat([df, to_add], ignore_index=True)
-	    
+
 	    if verbose == 2:
 		    # print status/time
-		    status_update(f'Concatenation successful. DataFrame consists of files 1-{i}.')
-	
+		    status_update(
+		        f'Concatenation successful. DataFrame consists of files 1-{i}.')
+
 	if verbose:
 		# print status/time
 		status_update('Load complete!')
@@ -211,7 +216,6 @@ def load_multi_df(data_path, file_prefix, ext, num_files, compression='infer', v
 
 
 def name_splitter(name, cutoff):
-
 	'''
 
 	Function to split long strings for use in horizontal bar chart.
@@ -234,27 +238,27 @@ def name_splitter(name, cutoff):
 	'''
 
 	# split string into separate words
-    splitted = name.split()
+	splitted = name.split()
 
-    # instantiate empty string
-    name = ''
+	# instantiate empty string
+	name = ''
 
-    # instantiate index counter
-    i = 0
+	# instantiate index counter
+	i = 0
 
-    # while string is below threshold
-    while len(name) <= cutoff-5:
+	# while string is below threshold
+	while len(name) <= cutoff-5:
 
-    	# add word and space to list
-        name += splitted[i] + ' '
+		# add word and space to list
+		name += splitted[i] + ' '
 
-        # iterate through index
-        i += 1
+		# iterate through index
+		i += 1
 
-    # add endline character and remaining words of string
-    name += '\n' + ' '.join(splitted[i:])
+	# add endline character and remaining words of string
+	name += '\n' + ' '.join(splitted[i:])
 
-    return name
+	return name
 
 
 def name_beautifier(name, cutoff=25, **kwargs):
@@ -284,34 +288,34 @@ def name_beautifier(name, cutoff=25, **kwargs):
 	'''
 
 	# strings more than twice as long as cutoff
-    if len(name) > cutoff*2:
+	if len(name) > cutoff*2:
 
-    	# split into two lines
-    	name = name_splitter(name, cutoff)
+		# split into two lines
+		name = name_splitter(name, cutoff)
 
-    	# split first 50 characters into two strings
-        resplitted = name[:50].split('\n')
+		# split first 50 characters into two strings
+		resplitted = name[:50].split('\n')
 
-        # split second string into words
-        resplitted[1] = resplitted[1].split()
+		# split second string into words
+		resplitted[1] = resplitted[1].split()
 
-        # replace last word with ellipsis
-        resplitted[1][-1] = '...'
+		# replace last word with ellipsis
+		resplitted[1][-1] = '...'
 
-        # rejoin words
-        resplitted[1] = ' '.join(resplitted[1])
+		# rejoin words
+		resplitted[1] = ' '.join(resplitted[1])
 
-        # rejoin two strings
-        name = '\n'.join(resplitted)
+		# rejoin two strings
+		name = '\n'.join(resplitted)
 
-    # strings longer than cutoff
-    elif len(name) > cutoff:
+	# strings longer than cutoff
+	elif len(name) > cutoff:
 
-    	# split into two lines
-        name = name_splitter(name, cutoff)
+		# split into two lines
+		name = name_splitter(name, cutoff)
 
-    # strings shorter than cutoff --> do nothing
-    else:
-        pass
-        
-    return name.title()
+	# strings shorter than cutoff --> do nothing
+	else:
+		pass
+
+	return name.title()
