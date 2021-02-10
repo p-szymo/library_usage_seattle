@@ -24,51 +24,51 @@ TBD
 The current dataset I'm working with was downloaded on December 15, 2020. The open data portal for this dataset is updated weekly, so in the future, I would like to add [API](https://dev.socrata.com/foundry/data.seattle.gov/5src-czff) calls into the pipeline, in order to quickly and easily add on the additional weekly data.
 
 ## Repo structure
+
 ```
-.
-|____01_data_cleaning.ipynb  # notebook to extract and transform original dataset
-|____charts  # folder containing data visualizations
-| |____total_checkouts_line.png
-| |____format_subgroup_counts.png
-| |____category_group_counts.png
-| |____missing_values_year_bar.png
-| |____yearly_percent_print_media_stackedbar.png
-| |____checkouts_holiday_violin.png
-| |____total_print_media_checkouts_yearly_2005-2020_line.png
-| |____equipment_counts.png
-| |____top25_books_adult_hbar.png
-| |____top25_books_hbar.png
-| |____checkouts_weekend_vs_weekday_violin.png
-| |____age_group_counts.png
-| |____total_checkouts_equipment_yearly_2015-2020_line.png
-| |____yearly_weekday_average_bar.png
-| |____missing_values_holiday.png
-| |____missing_values_day_x_year_bar.png
-| |____top25_books_adult_nonfiction_hbar.png
-| |____greatest_hits_genre_counts.png
-| |____format_group_counts.png
-| |____missing_values_day_bar.png
-| |____average_checkouts_day_bar.png
-| |____missing_values_holiday_bar_stack.png
-| |____yearly_total_print_media_stackedbar.png
-| |____top25_books_adult_fiction_hbar.png
-| |____total_checkouts_yearly_bar.png
-| |____top25_books_teen_hbar.png
-| |____top10_tapes_hbar.png
-| |____top25_books_kids_hbar.png
-| |____format_subgroup_counts_top6.png
-| |____top25_movies_hbar.png
-| |____percent_checkouts_equipment_yearly_bar.png
-| |____total_checkouts.png
-| |____top10_kids_movies_hbar.png
-| |____total_checkouts_yearly_line.png
-| |____top10_documentaries_hbar.png
-|______init__.py  # file connecting to functions folder
-|____README.md  # this file!
-|____.gitignore  # files to ignore
-|____02_eda.ipynb  # notebook to analyze and visualize data 
-|____functions  # folder with custom functions
-| |______init__.py  # file connecting to functions folder
-| |____data_cleaning.py  # data cleaning and loading functions
-| |____data_transform.py  # data transformation functions
+├── 01_data_cleaning.ipynb  # notebook to extract and transform original dataset
+├── charts  # folder containing data visualizations
+| ├── total_checkouts_line.png
+| ├── format_subgroup_counts.png
+| ├── category_group_counts.png
+| ├── missing_values_year_bar.png
+| ├── yearly_percent_print_media_stackedbar.png
+| ├── checkouts_holiday_violin.png
+| ├── total_print_media_checkouts_yearly_2005-2020_line.png
+| ├── equipment_counts.png
+| ├── top25_books_adult_hbar.png
+| ├── top25_books_hbar.png
+| ├── checkouts_weekend_vs_weekday_violin.png
+| ├── age_group_counts.png
+| ├── total_checkouts_equipment_yearly_2015-2020_line.png
+| ├── yearly_weekday_average_bar.png
+| ├── missing_values_holiday.png
+| ├── missing_values_day_x_year_bar.png
+| ├── top25_books_adult_nonfiction_hbar.png
+| ├── greatest_hits_genre_counts.png
+| ├── format_group_counts.png
+| ├── missing_values_day_bar.png
+| ├── average_checkouts_day_bar.png
+| ├── missing_values_holiday_bar_stack.png
+| ├── yearly_total_print_media_stackedbar.png
+| ├── top25_books_adult_fiction_hbar.png
+| ├── total_checkouts_yearly_bar.png
+| ├── top25_books_teen_hbar.png
+| ├── top10_tapes_hbar.png
+| ├── top25_books_kids_hbar.png
+| ├── format_subgroup_counts_top6.png
+| ├── top25_movies_hbar.png
+| ├── percent_checkouts_equipment_yearly_bar.png
+| ├── total_checkouts.png
+| ├── top10_kids_movies_hbar.png
+| ├── total_checkouts_yearly_line.png
+| └── top10_documentaries_hbar.png
+├── __init__.py  # file connecting to functions folder
+├── README.md  # this file!
+├── .gitignore  # files to ignore
+├── 02_eda.ipynb  # notebook to analyze and visualize data 
+└── functions  # folder with custom functions
+  ├── __init__.py  # file connecting to functions folder
+  ├── data_cleaning.py  # data cleaning and loading functions
+  └── data_transform.py  # data transformation functions
 ```
