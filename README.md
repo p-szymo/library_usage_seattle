@@ -26,49 +26,53 @@ The current dataset I'm working with was downloaded on December 15, 2020. The op
 ## Repo structure
 
 ```
-├── 01_data_cleaning.ipynb  # notebook to extract and transform original dataset
-├── charts  # folder containing data visualizations
-| ├── total_checkouts_line.png
-| ├── format_subgroup_counts.png
-| ├── category_group_counts.png
-| ├── missing_values_year_bar.png
-| ├── yearly_percent_print_media_stackedbar.png
-| ├── checkouts_holiday_violin.png
-| ├── total_print_media_checkouts_yearly_2005-2020_line.png
-| ├── equipment_counts.png
-| ├── top25_books_adult_hbar.png
-| ├── top25_books_hbar.png
-| ├── checkouts_weekend_vs_weekday_violin.png
-| ├── age_group_counts.png
-| ├── total_checkouts_equipment_yearly_2015-2020_line.png
-| ├── yearly_weekday_average_bar.png
-| ├── missing_values_holiday.png
-| ├── missing_values_day_x_year_bar.png
-| ├── top25_books_adult_nonfiction_hbar.png
-| ├── greatest_hits_genre_counts.png
-| ├── format_group_counts.png
-| ├── missing_values_day_bar.png
-| ├── average_checkouts_day_bar.png
-| ├── missing_values_holiday_bar_stack.png
-| ├── yearly_total_print_media_stackedbar.png
-| ├── top25_books_adult_fiction_hbar.png
-| ├── total_checkouts_yearly_bar.png
-| ├── top25_books_teen_hbar.png
-| ├── top10_tapes_hbar.png
-| ├── top25_books_kids_hbar.png
-| ├── format_subgroup_counts_top6.png
-| ├── top25_movies_hbar.png
-| ├── percent_checkouts_equipment_yearly_bar.png
-| ├── total_checkouts.png
-| ├── top10_kids_movies_hbar.png
-| ├── total_checkouts_yearly_line.png
-| └── top10_documentaries_hbar.png
-├── __init__.py  # file connecting to functions folder
-├── README.md  # this file!
-├── .gitignore  # files to ignore
-├── 02_eda.ipynb  # notebook to analyze and visualize data 
-└── functions  # folder with custom functions
-  ├── __init__.py  # file connecting to functions folder
-  ├── data_cleaning.py  # data cleaning and loading functions
-  └── data_transform.py  # data transformation functions
+├── 01_data_cleaning.ipynb  <-- notebook to extract and transform original dataset
+├── 02_eda.ipynb  <-- notebook to analyze and visualize data 
+├── __init__.py  <-- file connecting to functions folder
+├── README.md  <-- this file!
+├── .gitignore  <-- files and folders to ignore
+├── charts  <-- folder containing data visualizations
+└── functions  <-- folder with custom functions
+  ├── __init__.py  <-- file connecting to functions folder
+  ├── data_cleaning.py  <-- data cleaning and loading functions
+  └── data_transform.py  <-- data transformation functions
 ```
+
+<!--
+
+│ ├── total_checkouts_line.png
+│ ├── format_subgroup_counts.png
+│ ├── category_group_counts.png
+│ ├── missing_values_year_bar.png
+│ ├── yearly_percent_print_media_stackedbar.png
+│ ├── checkouts_holiday_violin.png
+│ ├── total_print_media_checkouts_yearly_2005-2020_line.png
+│ ├── equipment_counts.png
+│ ├── top25_books_adult_hbar.png
+│ ├── top25_books_hbar.png
+│ ├── checkouts_weekend_vs_weekday_violin.png
+│ ├── age_group_counts.png
+│ ├── total_checkouts_equipment_yearly_2015-2020_line.png
+│ ├── yearly_weekday_average_bar.png
+│ ├── missing_values_holiday.png
+│ ├── missing_values_day_x_year_bar.png
+│ ├── top25_books_adult_nonfiction_hbar.png
+│ ├── greatest_hits_genre_counts.png
+│ ├── format_group_counts.png
+│ ├── missing_values_day_bar.png
+│ ├── average_checkouts_day_bar.png
+│ ├── missing_values_holiday_bar_stack.png
+│ ├── yearly_total_print_media_stackedbar.png
+│ ├── top25_books_adult_fiction_hbar.png
+│ ├── total_checkouts_yearly_bar.png
+│ ├── top25_books_teen_hbar.png
+│ ├── top10_tapes_hbar.png
+│ ├── top25_books_kids_hbar.png
+│ ├── format_subgroup_counts_top6.png
+│ ├── top25_movies_hbar.png
+│ ├── percent_checkouts_equipment_yearly_bar.png
+│ ├── total_checkouts.png
+│ ├── top10_kids_movies_hbar.png
+│ ├── total_checkouts_yearly_line.png
+│ └── top10_documentaries_hbar.png
+-->
