@@ -32,6 +32,10 @@ The current dataset I'm working with was downloaded on December 15, 2020. The op
 ├── README.md  <-- this file!
 ├── .gitignore  <-- files and folders to ignore
 ├── charts  <-- folder containing data visualizations
+  ├── category_eda  <-- checkouts breakdown by category
+  ├── popular_items_eda  <-- most popular items checked out, often across categories and subcategories
+  ├── missing_values_eda  <-- investigation into dates that are missing from the data
+  └── time-based_eda  <-- time comparisons and trend analyses
 └── functions  <-- folder with custom functions
   ├── __init__.py  <-- file connecting to functions folder
   ├── data_cleaning.py  <-- data cleaning and loading functions
