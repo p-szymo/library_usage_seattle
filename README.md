@@ -3,9 +3,9 @@
 #### *Note*: This project is in its early (data analysis) stages. 
 
 ## Summary
-Using a dataset entitled [Checkouts by Title (Physical Items)](https://data.seattle.gov/Community/Checkouts-By-Title-Physical-Items-/5src-czff) (courtesy of [Seattle Open Data](https://data.seattle.gov/)), I explore how a library is used and which items are the most popular, with the ultimate goal of developing and building time series models to forecast future library usage. I have begun analyzing total checkouts, as well as more specific categories of checkouts, to see how those numbers fluctuate over time. This will be the basis for my eventual time series models.
+Using a dataset entitled [Checkouts by Title (Physical Items)](https://data.seattle.gov/Community/Checkouts-By-Title-Physical-Items-/5src-czff) (courtesy of [Seattle Open Data](https://data.seattle.gov/)), I explore how the library system of Seattle is used and which items are the most popular, with the ultimate goal of developing and building time series models to forecast future library usage. I have begun analyzing total checkouts, as well as more specific categories of checkouts, to see how those numbers fluctuate over time. This will be the basis for my eventual time series models.
 
-The original dataset is incredibly large (over 106.5 million datapoints with 13 columns, as well as an additional 7 columns that could be added via the [data dictionary](https://data.seattle.gov/Community/Integrated-Library-System-ILS-Data-Dictionary/pbt3-ytbc), so dealing with that has been key to progressing through this project. I created a dataset that is 106.5 million datapoints and 7 columns and takes about 15 minutes to load, as compared to several hours.
+The original dataset is incredibly large (over 106.5 million datapoints with 13 columns, as well as an additional 7 columns that could be added via the [data dictionary](https://data.seattle.gov/Community/Integrated-Library-System-ILS-Data-Dictionary/pbt3-ytbc), so dealing with the "bigness" of the data has been key to progressing through this project. As of this writing, I have created a dataset that is 106.5 million datapoints and 7 columns and takes about 20 minutes to load, as compared to several hours.
 
 ## Objectives
 1. Create a custom dataset with only necessary columns combined with the data dictionary indicating the format and categories of each item checkout.
@@ -27,19 +27,19 @@ The current dataset I'm working with was downloaded on December 15, 2020. The op
 
 ```
 ├── 01_data_cleaning.ipynb  <-- notebook to extract and transform original dataset
-├── 02_eda.ipynb  <-- notebook to analyze and visualize data 
-├── __init__.py  <-- file connecting to functions folder
-├── README.md  <-- this file!
-├── .gitignore  <-- files and folders to ignore
-├── charts  <-- folder containing data visualizations
-  ├── category_eda  <-- checkouts breakdown by category
-  ├── popular_items_eda  <-- most popular items checked out, often across categories and subcategories
-  ├── missing_values_eda  <-- investigation into dates that are missing from the data
-  └── time-based_eda  <-- time comparisons and trend analyses
-└── functions  <-- folder with custom functions
-  ├── __init__.py  <-- file connecting to functions folder
-  ├── data_cleaning.py  <-- data cleaning and loading functions
-  └── data_transform.py  <-- data transformation functions
+├── 02_eda.ipynb            <-- notebook to analyze and visualize data 
+├── __init__.py             <-- file connecting to functions folder
+├── README.md               <-- this file!
+├── .gitignore              <-- files and folders to ignore
+├── charts                  <-- folder containing data visualizations
+  ├── category_eda          <-- checkouts breakdown by category
+  ├── popular_items_eda     <-- most popular items checked out, often across categories and subcategories
+  ├── missing_values_eda    <-- investigation into dates that are missing from the data
+  └── time-based_eda        <-- time comparisons and trend analyses
+└── functions               <-- folder with custom functions
+  ├── __init__.py           <-- file connecting to functions folder
+  ├── data_cleaning.py      <-- data cleaning and loading functions
+  └── data_transform.py     <-- data transformation functions
 ```
 
 <!--
