@@ -141,7 +141,7 @@ cython_debug/
 .DS_Store
 
 # backup notebooks
-*-Copy1.ipynb
+*-Copy*.ipynb
 
 # data
 data/
